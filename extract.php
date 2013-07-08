@@ -2,8 +2,6 @@
 
 require_once('GifFrameExtractor.php');
 
-//$gifFilePath = 'circle25.gif';
-
 if(!isset($gifFilePath))
 {
     die("No gif path provided.");
