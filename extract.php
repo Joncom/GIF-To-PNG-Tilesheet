@@ -9,6 +9,11 @@ if(!isset($gifFilePath))
     die("No gif path provided.");
 }
 
+if(!GifFrameExtractor\GifFrameExtractor::isAnimatedGif($gifFilePath))
+{
+    die("File is not an animated gif.");
+}
+
 if (GifFrameExtractor\GifFrameExtractor::isAnimatedGif($gifFilePath)) { // check this is an animated GIF
 
     $gfe = new GifFrameExtractor\GifFrameExtractor();
