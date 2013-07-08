@@ -12,10 +12,8 @@ else if ($_POST && $_FILES["file"]["error"] > 0)
 else if($_POST && $_FILES["file"]["error"] === 0)
 {
 	// File uploaded successfully.
-	echo "Upload: " . $_FILES["file"]["name"] . "<br>";
-	echo "Type: " . $_FILES["file"]["type"] . "<br>";
-	echo "Size: " . ($_FILES["file"]["size"] / 1024) . " kB<br>";
-	echo "Stored in: " . $_FILES["file"]["tmp_name"];
+	$gifFilePath = $_FILES["file"]["tmp_name"];
+	require "extract.php";
 }
 
 ?>
