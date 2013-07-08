@@ -39,5 +39,6 @@ foreach ($gfe->getFrames() as $frame) {
 
 header( "Content-type: image/png" );
 imagepng($tilesheet);
+imagedestroy($tilesheet);
 
 ?>
