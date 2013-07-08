@@ -3,13 +3,7 @@ GIF-To-PNG-Tilesheet
 
 Extracts all frames of an animated GIF and copies them into a single PNG tilesheet file.
 
-### Usage: ###
-
-1. Clone repo.
-2. Run `index.php` in your browser.
-3. Specify image to convert.
-4. Hit go.
-5. Save the new image somewhere.
+[Click here to use it.](http://commins.ca/tools/GIF-To-PNG-Tilesheet/)
 
 ##### Credit #####
 
