@@ -14,34 +14,30 @@ if(!GifFrameExtractor\GifFrameExtractor::isAnimatedGif($gifFilePath))
     die("File is not an animated gif.");
 }
 
-if (GifFrameExtractor\GifFrameExtractor::isAnimatedGif($gifFilePath)) { // check this is an animated GIF
+$gfe = new GifFrameExtractor\GifFrameExtractor();
+$gfe->extract($gifFilePath);
 
-    $gfe = new GifFrameExtractor\GifFrameExtractor();
-    $gfe->extract($gifFilePath);
+$dimensions = $gfe->getFrameDimensions();
+$width = $dimensions[0]['width'];
+$height = $dimensions[0]['height'];
 
-    $dimensions = $gfe->getFrameDimensions();
-    $width = $dimensions[0]['width'];
-    $height = $dimensions[0]['height'];
+$frameCount = $gfe->getFrameNumber();
 
-    $frameCount = $gfe->getFrameNumber();
+$tilesheet = imagecreate($width * $frameCount, $height);
 
-    $tilesheet = imagecreate($width * $frameCount, $height);
+$red = imagecolorallocate($tilesheet, 255, 0, 0);
+imagecolortransparent($tilesheet, $red);
 
-    $red = imagecolorallocate($tilesheet, 255, 0, 0);
-    imagecolortransparent($tilesheet, $red);
+$x = 0;
+$y = 0;
 
-    $x = 0;
-    $y = 0;
-
-    foreach ($gfe->getFrames() as $frame) {
-        $frame = $frame['image'];
-        imagecopy($tilesheet, $frame, $x, $y, 0, 0, $width, $height);
-        $x += $width;
-    }
-
-    header( "Content-type: image/png" );
-    imagepng($tilesheet);
-
+foreach ($gfe->getFrames() as $frame) {
+    $frame = $frame['image'];
+    imagecopy($tilesheet, $frame, $x, $y, 0, 0, $width, $height);
+    $x += $width;
 }
+
+header( "Content-type: image/png" );
+imagepng($tilesheet);
 
 ?>
