@@ -2,7 +2,7 @@
 
 require_once('GifFrameExtractor.php');
 
-$gifFilePath = 'circle25.gif';
+//$gifFilePath = 'circle25.gif';
 
 if (GifFrameExtractor\GifFrameExtractor::isAnimatedGif($gifFilePath)) { // check this is an animated GIF
 
