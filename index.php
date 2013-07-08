@@ -1,13 +1,12 @@
 <?php
 
-namespace GifFrameExtractor;
 require_once('GifFrameExtractor.php');
 
 $gifFilePath = 'circle25.gif';
 
-if (GifFrameExtractor::isAnimatedGif($gifFilePath)) { // check this is an animated GIF
+if (GifFrameExtractor\GifFrameExtractor::isAnimatedGif($gifFilePath)) { // check this is an animated GIF
 
-    $gfe = new GifFrameExtractor();
+    $gfe = new GifFrameExtractor\GifFrameExtractor();
     $gfe->extract($gifFilePath);
 
     $dimensions = $gfe->getFrameDimensions();
